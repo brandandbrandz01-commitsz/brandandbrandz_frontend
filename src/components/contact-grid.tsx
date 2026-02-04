@@ -6,13 +6,21 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import axios from "axios";
 
 const formSchema = z.object({
     firstName: z.string().min(1, "First Name is required"),
     lastName: z.string().min(1, "Last Name is required"),
     businessEmail: z.string().email("Invalid email address").min(1, "Business Email is required"),
     companyName: z.string().min(1, "Company Name is required"),
-    phoneNumber: z.string().optional(),
+    phoneNumber: z
+        .string()
+        .min(8)
+        .max(12)
+        .optional()
+        .refine((val) => !val || /^\d+$/.test(val), {
+            message: "Phone number must contain only numbers",
+        }),
     message: z.string().min(1, "Message is required"),
 });
 
@@ -70,20 +78,9 @@ export function ContactGrid() {
         }
 
         try {
-            const response = await fetch(`${backendUrl}/api/contacts`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(values),
-            });
-
-            if (response.ok) {
-                setSubmitStatus("success");
-                form.reset(); // Reset form fields after successful submission
-            } else {
-                setSubmitStatus("error");
-            }
+            await axios.post(`${backendUrl}/api/contacts`, values);
+            setSubmitStatus("success");
+            form.reset(); // Reset form fields after successful submission
         } catch (error) {
             console.error("Form submission error:", error);
             setSubmitStatus("error");
@@ -91,7 +88,6 @@ export function ContactGrid() {
             setIsSubmitting(false);
         }
     };
-
 
     return (
         <section className="container mx-auto px-4 max-w-6xl py-12 lg:py-20">
@@ -232,7 +228,6 @@ export function ContactGrid() {
                         )}
                     </form>
                 </motion.div>
-
             </div>
         </section>
     );
