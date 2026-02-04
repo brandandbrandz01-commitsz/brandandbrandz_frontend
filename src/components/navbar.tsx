@@ -24,8 +24,8 @@ export function Navbar() {
                         <Link href="/products" className="text-lg hover:text-white hidden md:block">
                             Products
                         </Link>
-                        <Link href="#" className="text-lg hover:text-white hidden md:block">
-                            More
+                        <Link href="/career" className="text-lg hover:text-white hidden md:block">
+                            Career
                         </Link>
                         <Link href="/contact" className="hidden md:block">
                             <Button
