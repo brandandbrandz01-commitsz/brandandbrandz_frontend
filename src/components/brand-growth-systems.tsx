@@ -8,27 +8,27 @@ const services = [
     {
         id: '01',
         title: 'Brand strategy & positioning',
-        image: '/Brand strategy & positioning.webp',
+        image: '/Brand strategy & positioning.png',
     },
     {
         id: '02',
         title: 'Identity & digital experience',
-        image: '/Identity & digital experience.webp',
+        image: '/Identity & digital experience.png',
     },
     {
         id: '03',
         title: 'Marketing & growth architecture',
-        image: '/Marketing & growth architecture.webp',
+        image: '/Marketing & growth architecture.png',
     },
     {
         id: '04',
         title: 'AI-assisted intelligence',
-        image: '/AI-assisted intelligence.webp',
+        image: '/AI-assisted intelligence.png',
     },
     {
         id: '05',
         title: 'Product & platform development',
-        image: '/Product & platform development.webp',
+        image: '/Product & platform development.png',
     },
 ];
 
