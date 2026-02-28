@@ -33,8 +33,6 @@ export default function ContactPage() {
                 <ContactGrid />
 
                 <ContactMap />
-
-                <AnimatedFooter />
             </div>
         </main>
     );

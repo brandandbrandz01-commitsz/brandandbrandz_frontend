@@ -18,7 +18,7 @@ export function SiteFooter() {
         { label: "About", href: "/about" },
         { label: "Our Services", href: "/services" },
         { label: "Products", href: "/products" },
-        { label: "Carrer", href: "/career" },
+        { label: "More", href: "#" },
     ];
 
     const supportLinks = [

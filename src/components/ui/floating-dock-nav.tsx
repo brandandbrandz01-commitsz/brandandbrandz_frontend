@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { House, Briefcase, Package, Menu, X, Mail, Info, GraduationCap } from "lucide-react";
+import { House, Briefcase, Package, Menu, X, Mail, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -11,7 +11,6 @@ const navItems = [
     { name: "About", icon: Info, href: "/about" },
     { name: "Services", icon: Briefcase, href: "/services" },
     { name: "Products", icon: Package, href: "/products" },
-    {name: "Career", icon: GraduationCap, href: "/career"},
     { name: "Contact", icon: Mail, href: "/contact" },
 ];
 

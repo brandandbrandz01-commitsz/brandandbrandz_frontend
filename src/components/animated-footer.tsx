@@ -34,7 +34,7 @@ export function AnimatedFooter() {
     return (
         <div
             ref={ref}
-            className="mt-20 py-24 px-8 rounded-3xl text-center"
+            className="mt-20 py-24 px-8 text-center w-screen relative left-1/2 -translate-x-1/2 rounded-none"
             style={{
                 background: "linear-gradient(135deg, #1e3a5f 0%, #2d5a7b 50%, #4a6b8a 100%)",
                 opacity: isInView ? 1 : 0,

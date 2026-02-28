@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Raleway } from "next/font/google";
 import { EngagementCovers } from "@/components/about/engagement-covers";
+import { Timeline } from "@/components/about/timeline";
 import { ProcessExperience } from "@/components/about/process-experience";
 import { WhatWeHelp } from "@/components/about/what-we-help";
 import { HowItWorks } from "@/components/about/how-it-works";
@@ -25,24 +26,17 @@ export default function About() {
             <main className="flex flex-col w-full">
                 <section className="flex flex-col items-center justify-center min-h-[80vh] px-4 sm:px-6 lg:px-8 text-center pt-8">
                     <div className="max-w-4xl mx-auto space-y-6 relative z-10">
-                        <h1 className="text-4xl sm:text-6xl lg:text-6xl font-light text-white leading-tight">
+                        <h1 className="text-4xl sm:text-6xl lg:text-[76px] font-normal text-white leading-tight">
                             We believe strong brands are <br />
-                            built on <span className="font-normal">clarity</span> and <span className="font-normal">trust</span>.
+                            built on <span className="font-bold">clarity</span> and <span className="font-bold">trust</span>.
                         </h1>
 
-                        <p className="max-w-2xl mx-auto text-lg sm:text-xl text-gray-300 font-light leading-relaxed">
+                        <p className="max-w-4xl mx-auto text-[24px] text-gray-300 font-normal leading-relaxed">
                             Brand & Brandz helps founders and businesses turn ideas into trusted brands and
                             systems with clarity before growth.
                         </p>
 
-                        <div className="pt-12 text-center opacity-10">
-                            <h2 className="text-4xl font-bold text-white">
-                                Most brands chase attention.
-                            </h2>
-                            <h2 className="text-4xl font-bold text-white">
-                                We build credibility.
-                            </h2>
-                        </div>
+
                     </div>
                 </section>
 
@@ -50,6 +44,7 @@ export default function About() {
                 <ProcessExperience />
                 <WhatWeHelp />
                 <HowItWorks />
+                <Timeline />
                 <StrategyCTA />
             </main>
 
