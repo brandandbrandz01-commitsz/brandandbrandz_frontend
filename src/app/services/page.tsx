@@ -31,12 +31,7 @@ export default function ServicesPage() {
                     <section className="mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
                         <div className="text-center max-w-4xl mx-auto mb-16">
                             <h1
-                                className="text-4xl sm:text-5xl lg:text-6xl font-light text-white mb-6"
-                                style={{
-                                    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                                    fontWeight: 300,
-                                    lineHeight: "1.2",
-                                }}
+                                className="text-4xl sm:text-5xl lg:text-[76px] font-normal text-white mb-8 leading-[1.1]"
                             >
                                 Designed with clarity.
                                 <br />
@@ -45,26 +40,25 @@ export default function ServicesPage() {
                                 Scaled with intelligence.
                             </h1>
                             <p
-                                className="text-base sm:text-lg text-white/70 mb-4"
-                                style={{
-                                    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                                    lineHeight: "1.6",
-                                }}
+                                className="text-[24px] text-white/70 mb-12 font-normal leading-normal max-w-5xl mx-auto"
                             >
                                 At Brand & Brandz, services are not standalone offerings.
-                            </p>
-                            <p
-                                className="text-base sm:text-lg text-white/70 mb-12"
-                                style={{
-                                    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                                    lineHeight: "1.6",
-                                }}
-                            >
+                                <br className="hidden sm:block" />
                                 They are connected systems designed to take a business from idea to sustained growth.
                             </p>
 
                             <div className="inline-block px-8 py-3 bg-white rounded-full">
                                 <span className="text-black font-medium text-sm">Our Services</span>
+                            </div>
+
+                            <div className="mt-16 space-y-6">
+                                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                                    End-to-End Brand & System Solutions
+                                </h2>
+                                <p className="text-lg sm:text-xl text-white/70 max-w-4xl mx-auto leading-relaxed">
+                                    From strategy and brand foundations to digital platforms and intelligent systems,
+                                    we deliver connected solutions designed to build trust and support long-term growth.
+                                </p>
                             </div>
                         </div>
 

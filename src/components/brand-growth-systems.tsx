@@ -8,27 +8,27 @@ const services = [
     {
         id: '01',
         title: 'Brand strategy & positioning',
-        image: '/Brand strategy & positioning.png',
+        image: '/Brand strategy & positioning.webp',
     },
     {
         id: '02',
         title: 'Identity & digital experience',
-        image: '/Identity & digital experience.png',
+        image: '/Identity & digital experience.webp',
     },
     {
         id: '03',
         title: 'Marketing & growth architecture',
-        image: '/Marketing & growth architecture.png',
+        image: '/Marketing & growth architecture.webp',
     },
     {
         id: '04',
         title: 'AI-assisted intelligence',
-        image: '/AI-assisted intelligence.png',
+        image: '/AI-assisted intelligence.webp',
     },
     {
         id: '05',
         title: 'Product & platform development',
-        image: '/Product & platform development.png',
+        image: '/Product & platform development.webp',
     },
 ];
 
@@ -51,13 +51,13 @@ export function BrandGrowthSystems() {
                             <div
                                 key={service.id}
                                 onMouseEnter={() => setActiveIndex(index)}
-                                className={`flex items-center px-4 py-4 rounded-xl border cursor-pointer transition-all duration-300 ${activeindex === index
-                                        ? 'bg-gradient-to-r from-blue-900/60 to-transparent border-blue-500/50'
-                                        : 'border-white/20 hover:border-white/50'
+                                className={`flex items-center px-4 py-2 rounded-xl border cursor-pointer transition-all duration-300 ${activeindex === index
+                                    ? 'bg-gradient-to-r from-zinc-400 via-[#70879f] to-sky-700 border-transparent'
+                                    : 'border-white/20 hover:border-white/50'
                                     }`}
                             >
                                 <span
-                                    className={`font-semibold text-3xl mr-4 transition-colors duration-300 ${activeindex === index ? 'text-blue-400' : 'text-white/50'
+                                    className={`font-semibold text-3xl mr-4 transition-colors duration-300 ${activeindex === index ? 'text-white' : 'text-white/50'
                                         }`}
                                 >
                                     {service.id}
@@ -78,7 +78,7 @@ export function BrandGrowthSystems() {
                         </Button>
                     </div>
                 </div>
-                <div className="relative w-full max-w-[500px] aspect-[4/5] sm:min-h-[600px]">
+                <div className="relative w-full max-w-[500px] h-[500px]">
                     {services.map((service, index) => (
                         <Image
                             key={service.title}

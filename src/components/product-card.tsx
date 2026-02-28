@@ -61,7 +61,7 @@ export function ProductCard({ title, subtitle, description, imageSrc, reversed =
     return (
         <motion.div
             ref={cardRef}
-            className="w-full bg-[#121212] rounded-[2rem] overflow-hidden border border-white/5 relative group perspective-1000"
+            className="w-full bg-black rounded-[2rem] overflow-hidden border border-white/5 relative group perspective-1000"
             style={{
                 rotateX: isMobile ? 0 : rotateX,
                 rotateY: isMobile ? 0 : rotateY,
@@ -112,7 +112,7 @@ export function ProductCard({ title, subtitle, description, imageSrc, reversed =
                 </div>
 
                 {/* Image Section */}
-                <div className="flex-1 relative min-h-[400px] lg:min-h-[500px] bg-gradient-to-br from-white/5 to-transparent">
+                <div className="flex-1 relative min-h-[400px] lg:min-h-[500px] bg-black">
                     {/* Entry Slide Wrapper - Absolute to ensure height fill */}
                     <motion.div
                         className="absolute inset-0 flex items-center justify-center p-6"
