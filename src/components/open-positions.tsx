@@ -1,9 +1,8 @@
-"use client";
-
 import { Raleway } from "next/font/google";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useState, useEffect, useRef } from "react";
 
 const raleway = Raleway({
     weight: ["400", "500", "600", "700", "800"],
@@ -55,7 +54,90 @@ const positions = [
     },
 ];
 
+function PositionCard({ position, index, isMobile }: { position: any; index: number; isMobile: boolean }) {
+    const cardRef = useRef(null);
+    const isInView = useInView(cardRef, {
+        amount: 0.6,
+        margin: "-10% 0px -10% 0px"
+    });
+
+    const isActive = isMobile ? isInView : false;
+
+    return (
+        <motion.div
+            ref={cardRef}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="group relative bg-[#0A0A0A] border border-white/10 rounded-[40px] p-8 sm:p-12 overflow-hidden transition-all duration-300 hover:border-gray-800"
+            style={{
+                boxShadow: "inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 10px 30px -10px rgba(0,0,0,0.5)"
+            }}
+        >
+            {/* Background Gradient Layer */}
+            <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-zinc-400 via-[#70879f] to-sky-700 pointer-events-none"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: isActive ? 1 : 0 }}
+                style={{
+                    transition: "opacity 0.5s ease"
+                }}
+            />
+
+            {/* Desktop Hover Fallback */}
+            {!isMobile && (
+                <div className="absolute inset-0 bg-gradient-to-r from-zinc-400 via-[#70879f] to-sky-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            )}
+
+            <div className="relative z-10 flex flex-col h-full space-y-8">
+                {/* Tags */}
+                <div className="flex flex-wrap gap-4">
+                    {position.tags.map((tag: string, i: number) => (
+                        <span
+                            key={i}
+                            className={`px-6 py-2 rounded-full border border-white/20 text-gray-300 group-hover:text-white group-hover:border-white/40 text-sm sm:text-base font-medium tracking-wide transition-colors ${isActive ? 'text-white border-white/40' : ''}`}
+                        >
+                            {tag}
+                        </span>
+                    ))}
+                </div>
+
+                {/* Content */}
+                <div className="space-y-4 flex-grow">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight">
+                        {position.title}
+                    </h3>
+                    <p className={`text-gray-400 group-hover:text-white text-base sm:text-lg leading-relaxed max-w-lg transition-colors ${isActive ? 'text-white' : ''}`}>
+                        {position.description}
+                    </p>
+                </div>
+
+                {/* Button */}
+                <div className="pt-2">
+                    <Link href={`/jobs/${position.id}`}>
+                        <Button
+                            className={`bg-[#1F1F1F] text-white border border-white/10 rounded-full px-8 py-6 text-base font-medium transition-all duration-300 w-fit group-hover:bg-white group-hover:text-black group-hover:border-transparent group-hover:shadow-lg ${isActive ? 'bg-white text-black border-transparent shadow-lg' : ''}`}
+                        >
+                            Read More
+                        </Button>
+                    </Link>
+                </div>
+            </div>
+        </motion.div>
+    );
+}
+
 export function OpenPositions() {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <section className={`py-24 px-4 sm:px-6 lg:px-8 relative z-20 ${raleway.className}`}>
             <div className="max-w-7xl mx-auto space-y-16">
@@ -84,52 +166,12 @@ export function OpenPositions() {
                 {/* Positions Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {positions.map((position, index) => (
-                        <motion.div
+                        <PositionCard
                             key={position.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="group relative bg-[#0A0A0A] border border-white/10 rounded-[40px] p-8 sm:p-12 overflow-hidden transition-all duration-300 hover:bg-gradient-to-r hover:from-zinc-400 hover:via-[#70879f] hover:to-sky-700 hover:border-gray-800"
-                            style={{
-                                boxShadow: "inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 10px 30px -10px rgba(0,0,0,0.5)"
-                            }}
-                        >
-                            <div className="relative z-10 flex flex-col h-full space-y-8">
-                                {/* Tags */}
-                                <div className="flex flex-wrap gap-4">
-                                    {position.tags.map((tag, i) => (
-                                        <span
-                                            key={i}
-                                            className="px-6 py-2 rounded-full border border-white/20 text-gray-300 group-hover:text-white group-hover:border-white/40 text-sm sm:text-base font-medium tracking-wide transition-colors"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-
-                                {/* Content */}
-                                <div className="space-y-4 flex-grow">
-                                    <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight">
-                                        {position.title}
-                                    </h3>
-                                    <p className="text-gray-400 group-hover:text-white text-base sm:text-lg leading-relaxed max-w-lg transition-colors">
-                                        {position.description}
-                                    </p>
-                                </div>
-
-                                {/* Button */}
-                                <div className="pt-2">
-                                    <Link href={`/jobs/${position.id}`}>
-                                        <Button
-                                            className="bg-[#1F1F1F] text-white border border-white/10 rounded-full px-8 py-6 text-base font-medium transition-all duration-300 w-fit group-hover:bg-white group-hover:text-black group-hover:border-transparent group-hover:shadow-lg"
-                                        >
-                                            Read More
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </div>
-                        </motion.div>
+                            position={position}
+                            index={index}
+                            isMobile={isMobile}
+                        />
                     ))}
                 </div>
 

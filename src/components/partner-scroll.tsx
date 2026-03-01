@@ -21,8 +21,8 @@ const partners = [
 ];
 
 export function PartnerScroll() {
-    // Duplicate the partners array twice more to ensure super smooth looping on all screen sizes
-    const duplicatedPartners = [...partners, ...partners, ...partners];
+    // Duplicate the partners array for a smoother loop
+    const duplicatedPartners = [...partners, ...partners, ...partners, ...partners];
 
     return (
         <section className="relative w-full overflow-hidden bg-black py-12">
@@ -37,10 +37,10 @@ export function PartnerScroll() {
                 <motion.div
                     className="flex items-center gap-16 md:gap-24 w-max"
                     animate={{
-                        x: ['0%', '-33.33%'],
+                        x: ['0%', '-50%'],
                     }}
                     transition={{
-                        duration: 40,
+                        duration: 30,
                         ease: 'linear',
                         repeat: Infinity,
                     }}
@@ -48,12 +48,12 @@ export function PartnerScroll() {
                     {duplicatedPartners.map((partner, index) => (
                         <div
                             key={`${partner}-${index}`}
-                            className="flex-shrink-0 opacity-40 hover:opacity-100 transition-all duration-500 transform hover:scale-110"
+                            className="flex-shrink-0 opacity-50 hover:opacity-100 transition-all duration-500 transform hover:scale-110 grayscale hover:grayscale-0"
                         >
                             <img
                                 src={`/partners/${partner}`}
                                 alt={`Partner ${partner}`}
-                                className="h-6 md:h-10 w-auto object-contain brightness-0 invert"
+                                className="h-6 md:h-10 w-auto object-contain"
                             />
                         </div>
                     ))}
