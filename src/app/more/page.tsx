@@ -28,11 +28,9 @@ export default function More() {
                     className="object-cover"
                 />
             </div>
-            <div className="relative z-10">
-                <Navbar />
-            </div>
+            <Navbar />
 
-            <main className="flex flex-col w-full relative z-10">
+            <main className="flex flex-col w-full">
                 <section className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 text-center pt-8">
                     <div className="max-w-4xl mx-auto space-y-8 relative z-10">
                         {/* Animated Content Wrapper */}
