@@ -103,35 +103,36 @@ export function Navbar() {
             <motion.header
                 initial={false}
                 animate={{
-                    width: isDesktop ? "100%" : "92%",
-                    borderRadius: isDesktop ? "0px" : "9999px",
-                    top: isDesktop ? "0px" : (scrolled ? "12px" : "24px"),
-                    backgroundColor: isDesktop ? (scrolled ? "rgba(0, 0, 0, 0.7)" : "rgba(0, 0, 0, 0.3)") : "rgba(0, 0, 0, 0.4)",
-                    padding: isDesktop ? "0px 32px" : (scrolled ? "8px 24px" : "12px 32px"),
+                    width: "100%",
+                    top: "0px",
+                    background: scrolled 
+                        ? "rgba(0, 0, 0, 0.5)" 
+                        : "transparent",
+                    backdropFilter: "blur(12px)",
+                    borderBottom: scrolled ? "1px solid rgba(255, 255, 255, 0.05)" : "none",
+                    padding: isDesktop ? "0px 80px" : "8px 24px",
                 }}
-                className={`fixed left-1/2 -translate-x-1/2 z-[110] backdrop-blur-md transition-all duration-300
-                    ${isDesktop ? 'border-b border-white/5' : 'border border-white/10 max-w-7xl'}
-                `}
+                className="fixed left-1/2 -translate-x-1/2 z-[110] transition-all duration-300"
             >
-                <nav className={`container mx-auto flex items-center justify-between w-full ${isDesktop ? 'h-20' : 'h-14 md:h-16'}`}>
-                    {/* Logo (Top Left for both) */}
-                    <Link href="/" onClick={() => setIsOpen(false)} className="relative z-[120]">
-                        <Image src="/logo.png" width={100} height={100} alt="logo" className={`cursor-pointer w-auto ${isDesktop ? 'h-12 md:h-14' : 'h-10 md:h-12'}`} />
+                <nav className={`mx-auto flex items-center justify-between w-full ${isDesktop ? 'h-28' : 'h-16'}`}>
+                    {/* Logo (Left) */}
+                    <Link href="/" onClick={() => setIsOpen(false)} className="relative z-[120] flex-shrink-0">
+                        <Image src="/logo.png" width={110} height={110} alt="logo" className={`cursor-pointer w-auto ${isDesktop ? 'h-18' : 'h-12'}`} />
                     </Link>
 
-                    {/* Desktop Links (Hidden on Mobile) */}
-                    <div className="hidden lg:flex items-center gap-8">
+                    {/* Desktop Links (Center-Right) */}
+                    <div className="hidden lg:flex items-center gap-12">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-sm font-medium text-white/70 hover:text-white transition-colors"
+                                className={`text-[17px] tracking-tight transition-all hover:text-white ${link.name === 'Home' ? 'font-bold text-white' : 'font-medium text-white/80'}`}
                             >
                                 {link.name}
                             </Link>
                         ))}
                         <Link href="/contact">
-                            <Button variant="default" className="text-black bg-white hover:bg-gray-200 rounded-full px-6">
+                            <Button variant="default" className="text-black bg-white hover:bg-gray-100 rounded-full px-8 py-6 text-sm font-bold shadow-xl transition-all hover:scale-105 active:scale-95">
                                 Contact us
                             </Button>
                         </Link>
@@ -194,8 +195,7 @@ export function Navbar() {
                 </button>
             </div>
 
-            {/* Spacer for flow */}
-            <div className={isDesktop ? "h-20" : "h-28 md:h-32"} />
+            {/* Removed spacer to allow hero to float behind */}
         </>
     );
 }

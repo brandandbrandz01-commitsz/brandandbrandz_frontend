@@ -49,7 +49,7 @@ export function TechStack() {
 
                 {/* Infinite Loop Track */}
                 <div
-                    className="flex gap-4 md:gap-16 items-center animate-scroll w-max py-12 px-4 hover:[animation-play-state:paused] active:[animation-play-state:paused]"
+                    className="flex gap-4 md:gap-16 items-center animate-scroll w-max pt-20 pb-12 px-4 hover:[animation-play-state:paused] active:[animation-play-state:paused]"
                     onTouchStart={(e) => {
                         (e.currentTarget as HTMLElement).style.animationPlayState = 'paused';
                     }}

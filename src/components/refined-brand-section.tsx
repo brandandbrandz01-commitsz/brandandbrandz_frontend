@@ -65,7 +65,7 @@ export function RefinedBrandSection() {
     });
 
     return (
-        <section ref={containerRef} className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-black text-center min-h-[100vh] flex flex-col justify-center">
+        <section ref={containerRef} className="hidden 2xl:flex py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-black text-center min-h-[100vh] flex-col justify-center">
             <div className="max-w-6xl mx-auto space-y-12 md:space-y-16">
 
                 {/* Intro Lines */}
@@ -73,7 +73,7 @@ export function RefinedBrandSection() {
                     <QuoteLine
                         progress={scrollYProgress}
                         range={[0, 0.2]}
-                        className="text-2xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white leading-relaxed"
+                        className="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-white leading-relaxed"
                         segments={[
                             { text: "Strong brands ", bold: true },
                             { text: "are not rushed." }
@@ -82,7 +82,7 @@ export function RefinedBrandSection() {
                     <QuoteLine
                         progress={scrollYProgress}
                         range={[0.15, 0.35]}
-                        className="text-sm sm:text-xl lg:text-2xl font-light uppercase tracking-[0.2em] text-white/50"
+                        className="text-xs sm:text-base lg:text-lg font-light uppercase tracking-[0.2em] text-white/50"
                         segments={[
                             { text: "They are designed with " },
                             { text: "intention", bold: true }
@@ -95,7 +95,7 @@ export function RefinedBrandSection() {
                     <QuoteLine
                         progress={scrollYProgress}
                         range={[0.35, 0.85]}
-                        className="text-3xl sm:text-5xl lg:text-7xl font-light leading-[1.5] md:leading-tight tracking-tight"
+                        className="text-3xl sm:text-5xl lg:text-[72px] font-light leading-[1.1] tracking-tight max-w-4xl mx-auto"
                         segments={[
                             { text: "We focus on " },
                             { text: "clarity", bold: true },
@@ -112,7 +112,7 @@ export function RefinedBrandSection() {
                 <QuoteLine
                     progress={scrollYProgress}
                     range={[0.85, 1]}
-                    className="text-base sm:text-xl text-white/40 font-light"
+                    className="text-base sm:text-lg text-white/40 font-light"
                     segments={[
                         { text: "This is how " },
                         { text: "enduring brands", bold: true },

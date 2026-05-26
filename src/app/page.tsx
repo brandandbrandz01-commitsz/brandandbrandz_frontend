@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Raleway } from "next/font/google";
 import { Navbar } from '@/components/navbar';
 import { HomeHero } from '@/components/home-hero';
+import { PartnerScroll } from '@/components/partner-scroll';
 import { HowWeWork } from '@/components/how-we-work';
 import { TechStack } from '@/components/tech-stack';
 import { BrandGrowthSystems } from '@/components/brand-growth-systems';
@@ -151,11 +152,14 @@ export default function App() {
   }
 
   return (
-    <div className={"bg-black text-white bg-[radial-gradient(ellipse_150%_20%_at_50%_0%,#adbac9_0%,rgba(0,0,0,0)_45%)] relative pt-6 " + raleway.className}>
+    <div className={"bg-black text-white relative " + raleway.className}>
       <Navbar />
 
       <main>
         <HomeHero />
+
+        {/* Partner logos — visible on scroll after hero */}
+        <PartnerScroll />
 
         <div className="relative z-10 bg-black">
           <RefinedBrandSection />

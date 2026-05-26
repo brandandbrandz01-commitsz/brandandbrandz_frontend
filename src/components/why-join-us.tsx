@@ -147,8 +147,7 @@ function Card({ card }: { card: CardData }) {
                 rotateY: isMobile ? 0 : rotateY,
             }}
             className={`
-                group relative overflow-hidden rounded-[32px]
-                ${useGradient ? 'bg-gradient-to-b from-[#1E2532] to-black border border-white/10' : ''}
+                group relative overflow-hidden rounded-[32px] bg-black border border-white/10
                 min-h-[420px] 
                 ${card.span}
             `}
@@ -168,11 +167,12 @@ function Card({ card }: { card: CardData }) {
             {/* Custom Background Image / Parallax Layer */}
             {card.useCustomBackground && (
                 <motion.div
-                    className="absolute inset-[-10%] w-[120%] h-[120%] z-0" // 120% size to allow for parallax movement without gaps
+                    className="absolute inset-[-10%] w-[120%] h-[120%] z-0"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
                     style={{
                         y: isMobile ? parallaxY : 0,
-                        // On desktop, we can also add a subtle parallax or just keep it static relative to tilt
-                        // The user asked for velocity based on mobile. 
                     }}
                 >
                     <Image
@@ -182,6 +182,8 @@ function Card({ card }: { card: CardData }) {
                         className="object-cover"
                         priority
                     />
+                    {/* Dark overlay for text readability on hover */}
+                    <div className="absolute inset-0 bg-black/40 z-1" />
                 </motion.div>
             )}
 
@@ -207,6 +209,9 @@ function Card({ card }: { card: CardData }) {
                     style={{ background: shineBg }}
                 />
             )}
+
+            {/* Bottom Glow Effect (Requested Zinc-800/30) */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-zinc-800/30 blur-[100px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10" />
 
             {/* Glossy Overlay (Static) */}
             <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-30" />

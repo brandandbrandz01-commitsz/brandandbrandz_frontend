@@ -2,6 +2,9 @@
 
 import { motion, Variants } from 'framer-motion';
 import { useState } from 'react';
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export function Timeline() {
     // Track which card is hovered to highlight the corresponding connector line
@@ -84,8 +87,8 @@ export function Timeline() {
                             className="absolute inset-0 bg-blue-500/30 rounded-full blur-xl"
                         />
 
-                        <div className="relative bg-gradient-to-r from-zinc-400 via-[#70879f] to-sky-700 text-white px-8 sm:px-12 py-4 sm:py-6 rounded-full border border-white/20 shadow-[0_0_20px_rgba(59,130,246,0.3)] backdrop-blur-xl">
-                            <span className="text-2xl sm:text-3xl font-bold tracking-wider text-white">
+                        <div className="relative bg-gradient-to-r from-zinc-400 via-[#70879f] to-sky-700 text-white px-8 sm:px-12 py-4 sm:py-6 rounded-full border border-white/20 shadow-[0_0_20px_rgba(59,130,246,0.3)] backdrop-blur-xl group-hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-all duration-300">
+                            <span className={`text-2xl sm:text-3xl font-extrabold tracking-[0.15em] text-white tabular-nums ${inter.className}`}>
                                 2023 – 2025
                             </span>
                         </div>
@@ -228,7 +231,7 @@ function TimelineCard({ index, setHoveredIndex, title, content, delay, gradient 
                         <li key={i} className="flex gap-3 text-sm sm:text-base">
                             <span className={`${gradient ? 'text-white/60' : 'text-blue-400'} mt-1`}>•</span>
                             <span className={`${gradient ? 'text-white/90' : 'text-gray-400 font-light'}`}>
-                                <strong className="text-white font-medium">{item.year}:</strong> {item.text}
+                                <strong className={`text-white font-bold tabular-nums tracking-wide mr-1 ${inter.className}`}>{item.year}:</strong> {item.text}
                             </span>
                         </li>
                     ))}

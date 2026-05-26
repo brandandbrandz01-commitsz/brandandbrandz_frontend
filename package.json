@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node --max-old-space-size=8192 ./node_modules/next/dist/bin/next dev --webpack",
     "build": "next build",
     "postbuild": "next-sitemap --config next-sitemap.config.cjs",
     "export": "next export",
